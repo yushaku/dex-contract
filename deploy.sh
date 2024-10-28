@@ -1,10 +1,12 @@
 #! /bin/bash
 
 network=bnb_testnet
+NETWORKS=("bnb_testnet" "bnb")
+network=$(printf "%s\n" "${NETWORKS[@]}" | fzf --layout reverse --prompt="Select network: ")
 
 if [[ -z "$1" ]]; then
   OPTIONS=("governor" "shopPayment" "NFTs")
-  SELECTION=$(printf "%s\n" "${OPTIONS[@]}" | fzf --multi --prompt="Select options: ")
+  SELECTION=$(printf "%s\n" "${OPTIONS[@]}" | fzf --layout reverse --multi --prompt="Select contracts: ")
 else
   SELECTION=$1
 fi
