@@ -20,9 +20,6 @@ importers:
       '@openzeppelin/hardhat-upgrades':
         specifier: ^2.2.1
         version: 2.2.1(@nomicfoundation/hardhat-ethers@3.0.4(ethers@6.7.1(bufferutil@4.0.7)(utf-8-validate@5.0.10))(hardhat@2.17.2(bufferutil@4.0.7)(ts-node@10.9.1(@types/node@20.5.7)(typescript@5.2.2))(typescript@5.2.2)(utf-8-validate@5.0.10)))(@nomicfoundation/hardhat-verify@1.1.1(hardhat@2.17.2(bufferutil@4.0.7)(ts-node@10.9.1(@types/node@20.5.7)(typescript@5.2.2))(typescript@5.2.2)(utf-8-validate@5.0.10)))(bufferutil@4.0.7)(ethers@6.7.1(bufferutil@4.0.7)(utf-8-validate@5.0.10))(hardhat@2.17.2(bufferutil@4.0.7)(ts-node@10.9.1(@types/node@20.5.7)(typescript@5.2.2))(typescript@5.2.2)(utf-8-validate@5.0.10))(utf-8-validate@5.0.10)
-      '@openzeppelin/upgrades-core':
-        specifier: ^1.40.0
-        version: 1.40.0
       '@thirdweb-dev/contracts':
         specifier: ^3.13.0
         version: 3.13.0

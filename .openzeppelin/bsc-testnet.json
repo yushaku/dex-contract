@@ -1,0 +1,398 @@
+{
+  "manifestVersion": "3.2",
+  "proxies": [
+    {
+      "address": "0x6b3De2f71bbeeEc360Cd50f6C19Daf13534bE8EA",
+      "txHash": "0xe60afb1788254e3f2a3c5a7e09171c8d59633a2888fe821516ee464ff1a6f683",
+      "kind": "uups"
+    }
+  ],
+  "impls": {
+    "eaeee2be91b738f8bbc709ee2c53ab0a976c843cebce5c93d360a7f08736c809": {
+      "address": "0xe0AC1Bef24F8bBC31D6E54186262a6bf567675d9",
+      "txHash": "0x3135877e961b850b742fc286bbed9cb2b4dd2474f148f9e898b252f551dd6e1c",
+      "layout": {
+        "solcVersion": "0.8.20",
+        "storage": [
+          {
+            "label": "orders",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_string_memory_ptr,t_struct(Order)1948_storage)",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:48"
+          },
+          {
+            "label": "userOrders",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_array(t_string_storage)dyn_storage)",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:49"
+          },
+          {
+            "label": "allowedTokens",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:51"
+          },
+          {
+            "label": "payableToken",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:52"
+          },
+          {
+            "label": "withdrawable",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:53"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:56"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_string_storage)dyn_storage": {
+            "label": "string[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(Status)1934": {
+            "label": "enum Status",
+            "members": [
+              "PAID",
+              "DELIVERED",
+              "CANCELLED"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_array(t_string_storage)dyn_storage)": {
+            "label": "mapping(address => string[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_string_memory_ptr,t_struct(Order)1948_storage)": {
+            "label": "mapping(string => struct Order)",
+            "numberOfBytes": "32"
+          },
+          "t_string_memory_ptr": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Order)1948_storage": {
+            "label": "struct Order",
+            "members": [
+              {
+                "label": "orderId",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "buyer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "price",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "status",
+                "type": "t_enum(Status)1934",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "createdAt",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "token",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              }
+            ],
+            "numberOfBytes": "192"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.ReentrancyGuard": [
+            {
+              "contract": "ReentrancyGuardUpgradeable",
+              "label": "_status",
+              "type": "t_uint256",
+              "src": "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol:40"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    },
+    "5a6f4046c21862079b27faae54b8a27c09904b3ed190272cc5ef4a486958768c": {
+      "address": "0xA6814D965e4c3bBbB02951b039C5b8d546Ba3D27",
+      "txHash": "0x95cf2878a6fdb849df2f7018511911466232fe68e8e70add4b80272e90d46692",
+      "layout": {
+        "solcVersion": "0.8.20",
+        "storage": [
+          {
+            "label": "orders",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_mapping(t_string_memory_ptr,t_struct(Order)1948_storage)",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:48"
+          },
+          {
+            "label": "userOrders",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_mapping(t_address,t_array(t_string_storage)dyn_storage)",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:49"
+          },
+          {
+            "label": "allowedTokens",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_array(t_address)dyn_storage",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:51"
+          },
+          {
+            "label": "payableToken",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_mapping(t_address,t_bool)",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:52"
+          },
+          {
+            "label": "withdrawable",
+            "offset": 0,
+            "slot": "4",
+            "type": "t_mapping(t_address,t_uint256)",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:53"
+          },
+          {
+            "label": "__gap",
+            "offset": 0,
+            "slot": "5",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "ShopPayment",
+            "src": "contracts/market/ShopPayment.sol:56"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_string_storage)dyn_storage": {
+            "label": "string[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_enum(Status)1934": {
+            "label": "enum Status",
+            "members": [
+              "PAID",
+              "DELIVERED",
+              "CANCELLED"
+            ],
+            "numberOfBytes": "1"
+          },
+          "t_mapping(t_address,t_array(t_string_storage)dyn_storage)": {
+            "label": "mapping(address => string[])",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)",
+            "numberOfBytes": "32"
+          },
+          "t_mapping(t_string_memory_ptr,t_struct(Order)1948_storage)": {
+            "label": "mapping(string => struct Order)",
+            "numberOfBytes": "32"
+          },
+          "t_string_memory_ptr": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_string_storage": {
+            "label": "string",
+            "numberOfBytes": "32"
+          },
+          "t_struct(Order)1948_storage": {
+            "label": "struct Order",
+            "members": [
+              {
+                "label": "orderId",
+                "type": "t_string_storage",
+                "offset": 0,
+                "slot": "0"
+              },
+              {
+                "label": "buyer",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "1"
+              },
+              {
+                "label": "price",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "2"
+              },
+              {
+                "label": "status",
+                "type": "t_enum(Status)1934",
+                "offset": 0,
+                "slot": "3"
+              },
+              {
+                "label": "createdAt",
+                "type": "t_uint256",
+                "offset": 0,
+                "slot": "4"
+              },
+              {
+                "label": "token",
+                "type": "t_address",
+                "offset": 0,
+                "slot": "5"
+              }
+            ],
+            "numberOfBytes": "192"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          },
+          "t_uint64": {
+            "label": "uint64"
+          }
+        },
+        "namespaces": {
+          "erc7201:openzeppelin.storage.ReentrancyGuard": [
+            {
+              "contract": "ReentrancyGuardUpgradeable",
+              "label": "_status",
+              "type": "t_uint256",
+              "src": "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol:40"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Ownable": [
+            {
+              "contract": "OwnableUpgradeable",
+              "label": "_owner",
+              "type": "t_address",
+              "src": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:24"
+            }
+          ],
+          "erc7201:openzeppelin.storage.Initializable": [
+            {
+              "contract": "Initializable",
+              "label": "_initialized",
+              "type": "t_uint64",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:69"
+            },
+            {
+              "contract": "Initializable",
+              "label": "_initializing",
+              "type": "t_bool",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:73"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

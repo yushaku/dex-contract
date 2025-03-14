@@ -56,8 +56,8 @@ contract ShopPayment is
   uint256[50] private __gap;
 
   event OrderPaid(string orderId, address indexed buyer, uint256 price);
-  event OrderCancelled(string orderId, uint256 refundAmount);
-  event OrderDelivered(string orderId);
+  event OrderCancelled(string orderId, address indexed buyer, uint256 refundAmount);
+  event OrderDelivered(string orderId, address indexed buyer);
   event Withdrawn(address token, uint256 amount);
 
   /// @notice Initializer function (replaces constructor for upgradeable contracts)
@@ -80,6 +80,10 @@ contract ShopPayment is
   }
 
   // MARK: USER FUNCTIONS
+
+  // function getVertion() external pure returns (string memory) {
+  //   return "v2";
+  // }
 
   /// @notice create a new order
   /// @param _orderId uuid of order
@@ -208,7 +212,7 @@ contract ShopPayment is
     // REFUND TO THE USER
     _sendToken(order.token, order.buyer, order.price);
 
-    emit OrderCancelled(_orderId, order.price);
+    emit OrderCancelled(_orderId, order.buyer, order.price);
   }
 
   function _deliverOrder(string memory _orderId) internal {
@@ -219,7 +223,7 @@ contract ShopPayment is
     order.status = Status.DELIVERED;
     withdrawable[order.token] += order.price;
 
-    emit OrderDelivered(_orderId);
+    emit OrderDelivered(_orderId, order.buyer);
   }
 
   function _sendToken(address token, address to, uint256 amount) private {

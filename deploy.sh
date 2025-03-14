@@ -5,7 +5,7 @@ NETWORKS=("bnb_testnet" "bnb")
 network=$(printf "%s\n" "${NETWORKS[@]}" | fzf --layout reverse --prompt="Select network: ")
 
 if [[ -z "$1" ]]; then
-  OPTIONS=("governor" "shopPayment" "NFTs")
+  OPTIONS=("upgrade_shop_payment" "governor" "shopPayment" "NFTs")
   SELECTION=$(printf "%s\n" "${OPTIONS[@]}" | fzf --layout reverse --multi --prompt="Select contracts: ")
 else
   SELECTION=$1
@@ -19,6 +19,10 @@ fi
 
 if [ "$SELECTION" == "shopPayment" ]; then
   pnpm hardhat --network $network run ./scripts/2.deploy_shopPayment.ts
+fi
+
+if [ "$SELECTION" == "upgrade_shop_payment" ]; then
+  pnpm hardhat --network $network run ./scripts/2.upgrate_shopPaymnet.ts
 fi
 
 if [ "$SELECTION" == "NFTs" ]; then

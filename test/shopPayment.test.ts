@@ -3,7 +3,7 @@ import { expect } from "chai";
 import { parseEther } from "ethers";
 import { ethers, upgrades } from "hardhat";
 import { ZERO_ADDRESS } from "../scripts/utils/config";
-import { ShopPayment, YSK, YSK__factory } from "../typechain";
+import { ShopPayment, ShopPaymentV2, YSK, YSK__factory } from "../typechain";
 
 const timeTraver = (seconds: number | bigint) =>
   ethers.provider.send("evm_increaseTime", [seconds]);
@@ -247,6 +247,32 @@ describe("Shop payment gate way", function () {
         owner.address,
         parseEther("1"),
       );
+    });
+  });
+
+  describe("--- UPGRADES ---", () => {
+    it("should upgrade contract", async () => {
+      const ShopPayment = await ethers.getContractFactory("ShopPayment");
+      const shopPayment = await upgrades.deployProxy(ShopPayment, [], {
+        initializer: "initialize",
+      });
+
+      const proxyAddress = await shopPayment.getAddress();
+      console.log("proxy address", proxyAddress);
+
+      const ShopPaymentV2 = await ethers.getContractFactory("ShopPaymentV2");
+      await upgrades.upgradeProxy(proxyAddress, ShopPaymentV2);
+
+      // const newAddress =
+      //   await upgrades.erc1967.getImplementationAddress(paymentAddress);
+      // console.log("ShopPayment has new implementation: ", newAddress);
+      //
+      // const upgradedShopPayment = ShopPaymentV2.attach(
+      //   paymentAddress,
+      // ) as ShopPaymentV2;
+      //
+      // const version = await upgradedShopPayment.getVertion();
+      // expect(version).to.eq(2);
     });
   });
 });
