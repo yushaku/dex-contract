@@ -65,6 +65,11 @@ const config: HardhatUserConfig = {
       chainId: 80001,
       accounts: [`0x${WALLET_PRIVATE_KEY}`],
     },
+    onyx: {
+      url: `https://rpc.onyx.org`,
+      chainId: 80888,
+      accounts: [`0x${WALLET_PRIVATE_KEY}`],
+    },
   },
   etherscan: {
     apiKey: {
@@ -73,6 +78,7 @@ const config: HardhatUserConfig = {
       polygonMumbai: POLYGON_SCAN!,
       bscTestnet: BNB_API_KEY!,
       arbitrum: ARBITRUM_API_KEY!,
+      onyx: "",
     },
   },
   gasReporter: {
