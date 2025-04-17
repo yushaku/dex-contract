@@ -39,7 +39,7 @@
     "@alch/alchemy-web3": "^1.4.7",
     "@openzeppelin/contracts": "5.0.2",
     "@openzeppelin/contracts-upgradeable": "5.0.2",
-    "@openzeppelin/hardhat-upgrades": "^2.2.1",
+    "@openzeppelin/hardhat-upgrades": "^2.5.1",
     "@thirdweb-dev/contracts": "^3.13.0",
     "@thirdweb-dev/dynamic-contracts": "^1.2.5",
     "dotenv": "^16.3.1",

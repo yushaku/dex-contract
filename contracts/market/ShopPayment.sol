@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity 0.8.20;
 
-import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
-import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
-import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import { OwnableUpgradeable } from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import { Initializable } from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import { UUPSUpgradeable } from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import { ReentrancyGuardUpgradeable } from "@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol";
 
 import "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import "hardhat/console.sol";
 
 /// @author yushaku
 /// @title ShopPayment
@@ -38,8 +39,8 @@ error InvalidPaymentToken(address token);
 contract ShopPayment is
   Initializable,
   OwnableUpgradeable,
-  ReentrancyGuardUpgradeable,
-  UUPSUpgradeable
+  UUPSUpgradeable,
+  ReentrancyGuardUpgradeable
 {
   using SafeERC20 for IERC20Metadata;
 
@@ -58,6 +59,12 @@ contract ShopPayment is
   event OrderPaid(string orderId, address indexed buyer, uint256 price);
   event OrderCancelled(string orderId, address indexed buyer, uint256 refundAmount);
   event OrderDelivered(string orderId, address indexed buyer);
+
+  /// @custom:oz-upgrades-unsafe-allow constructor
+  constructor() {
+    _disableInitializers();
+  }
+
   event Withdrawn(address token, uint256 amount);
 
   /// @notice Initializer function (replaces constructor for upgradeable contracts)
@@ -71,7 +78,6 @@ contract ShopPayment is
     withdrawable[NATIVE_TOKEN] = 0;
   }
 
-  /// @notice Required by UUPSUpgradeable to authorize upgrades
   function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
 
   modifier isPayableToken(address _payToken) {
@@ -80,10 +86,9 @@ contract ShopPayment is
   }
 
   // MARK: USER FUNCTIONS
-
-  // function getVertion() external pure returns (string memory) {
-  //   return "v2";
-  // }
+  function getVertion() external pure virtual returns (uint8) {
+    return 1;
+  }
 
   /// @notice create a new order
   /// @param _orderId uuid of order
